@@ -7,16 +7,16 @@
 #1.1
 data = [43.2, 90.2, (932,45,54)]
 a,b,c = data 
+_, b, _ = data #using dummy variables for some of the values not needed
 
 #1.2
-_, b, _ = data #using dead variables for some of the values 
 
 #1.3 - Unpack with a * takes those items into a list
 
 #1.4 
 
 
-#PATTERN NOTE: Huh this is similar to deconstruction in ES6 as follows:
+#PATTERN NOTE: Similar pattern as deconstruction in ES6 as follows:
 #   const data = [43.2, 90.2, [932,45,54]]
 #   const [salesAvg, avg, sales] = data
 
