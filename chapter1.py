@@ -9,7 +9,9 @@ data = [43.2, 90.2, (932,45,54)]
 a,b,c = data 
 _, b, _ = data #using dummy variables for some of the values not needed
 
-#1.2
+#1.2 - Unpacking with iterables with arbitrary length 
+record = ('Frank', 'frank@gmail.com', '333-444-6666', '999-333-5543')
+name, email, *phone_numbers, = record
 
 #1.3 - Unpack with a * takes those items into a list
 
