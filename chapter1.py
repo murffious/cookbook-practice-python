@@ -17,6 +17,7 @@ line = 'nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false'
 uname, *fields, homedir, sh = line.split(':')
 # PATTERN NOTE: 2. used with unpacking tuples of different lengths 
 # PATTERN NOTE: 3. used for createing throw away variables with unwanted items in the unpack
+# PATTERN NOTE: 4. ex: clever for list-processing liek maybe split into a head, tail, then recursively iterate 
 
 #1.3 - Unpack with a * takes those items into a list
 
