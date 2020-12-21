@@ -69,6 +69,7 @@ heap #[-4, 2, 1, 23, 7, 2, 18, 23, 42, 37, 8] can use heapq.heappop() to get nex
 
 
 # 1.5 Implementing a Priority Queue - sorts items by a given priority
+
 import heapq
 class PriorityQueue:
     def __init__(self):
@@ -91,3 +92,54 @@ q.push(Item('foo'), 1)
 q.push(Item('bar'), 5)
 q.push(Item('spam'), 4)
 q.push(Item('grok'), 1)
+
+# To be able to compare the queue consists of tuples of the form (-priority, index, item).
+a = (1, 0, Item('foo'))
+b = (5, 1, Item('bar'))
+c = (1, 2, Item('grok'))
+
+
+# 1.6. Mapping Keys to Multiple Values in a Dictionary
+# a so-called “multidict” - you need to store the multiple values in another container such as a list or set.
+
+d = {
+ 'a' : [1, 2, 3],
+ 'b' : [4, 5]
+}
+e = {
+ 'a' : {1, 2, 3},
+ 'b' : {4, 5}
+}
+
+# Use a list if you want to preserve the insertion order of the items. 
+# Use a set if you want to eliminate duplicates (and don’t care about the order).
+from collections import defaultdict
+d = defaultdict(list)
+d['a'].append(1)
+d['a'].append(2)
+d['b'].append(4)
+
+d = defaultdict(set)
+d['a'].add(1)
+d['a'].add(2)
+d['b'].add(4)
+
+d = {}
+for key, value in pairs:
+    if key not in d:
+        d[key] = []
+        d[key].append(value)
+# Using a defaultdict simply leads to much cleaner code:
+d = defaultdict(list)
+for key, value in pairs:
+    d[key].append(value)
+# This recipe is strongly related to the problem of grouping records together in data pro‐
+# cessing problems. See Recipe 1.15 for an example.
+
+#One caution with defaultdict is that it will automatically create dictionary entries for
+# keys accessed later on (even if they aren’t currently found in the dictionary). If you don’t
+# want this behavior, you might use setdefault() on an ordinary dictionary insteadwarning it always creates a new instance of the initial value on each invocation (the empty list [] in the example).
+d = {} # A regular dictionary
+d.setdefault('a', []).append(1)
+d.setdefault('a', []).append(2)
+d.setdefault('b', []).append(4)
