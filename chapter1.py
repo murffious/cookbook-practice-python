@@ -143,3 +143,22 @@ d = {} # A regular dictionary
 d.setdefault('a', []).append(1)
 d.setdefault('a', []).append(2)
 d.setdefault('b', []).append(4)
+
+
+# 1.7. Keeping Dictionaries in Order - create a dictionary, and you also want to control the order of items when
+# iterating or serializing. --> Collections in Python containers that are used to store collections of data
+from collections import OrderedDict
+# Note for extra memory overhead more than twice as large as normal dictionary due to extra linked list created.
+d = OrderedDict()
+d['foo'] = 1
+d['bar'] = 2
+d['spam'] = 3
+d['grok'] = 4
+# Outputs "foo 1", "bar 2", "spam 3", "grok 4"
+for key in d:
+ print(key, d[key])
+# self note from JS background - collections is kinda like lodash - really common NON built in functionality added to python 
+import json
+json.dumps(d)
+>>>'{"foo": 1, "bar": 2, "spam": 3, "grok": 4}'
+# build it in order to control the order of fields appearing in a JSON encoding,
