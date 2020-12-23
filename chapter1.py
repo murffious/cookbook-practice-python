@@ -162,3 +162,30 @@ import json
 json.dumps(d)
 >>>'{"foo": 1, "bar": 2, "spam": 3, "grok": 4}'
 # build it in order to control the order of fields appearing in a JSON encoding,
+
+
+# 1.8. Calculating with Dictionaries
+prices = {
+ 'ACME': 45.23,
+ 'AAPL': 612.78,
+ 'IBM': 205.55,
+ 'HPQ': 37.20,
+ 'FB': 10.75
+}
+min_price = min(zip(prices.values(), prices.keys()))
+# min_price is (10.75, 'FB')
+max_price = max(zip(prices.values(), prices.keys()))
+# max_price is (612.78, 'AAPL')
+# Similarly, to rank the data, use zip() with sorted(), as in the following:
+prices_sorted = sorted(zip(prices.values(), prices.keys()))
+# be aware that zip() creates an iterator that can only be consumed once. For example, the following code is an error:
+prices_and_names = zip(prices.values(), prices.keys())
+print(min(prices_and_names)) # OK
+print(max(prices_and_names)) # ValueError: max() arg is an empty sequence
+# It should be noted that in calculations involving (value, key) pairs, the key will be used to determine the result in instances where multiple entries happen to have the same
+#value. For instance, in calculations such as min() and max(), the entry with the smallest or largest key will be returned if there happen to be duplicate values. For example:
+prices = { 'AAA' : 45.23, 'ZZZ': 45.23 }
+min(zip(prices.values(), prices.keys()))
+(45.23, 'AAA')
+max(zip(prices.values(), prices.keys()))
+(45.23, 'ZZZ')
