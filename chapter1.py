@@ -189,3 +189,30 @@ min(zip(prices.values(), prices.keys()))
 (45.23, 'AAA')
 max(zip(prices.values(), prices.keys()))
 (45.23, 'ZZZ')
+
+# 1.9. Finding Commonalities in Two Dictionaries
+a = {
+ 'x' : 1,
+ 'y' : 2,
+ 'z' : 3
+}
+b = {
+ 'w' : 10,
+ 'x' : 11,
+ 'y' : 2
+}
+
+# Find keys in common
+a.keys() & b.keys() # { 'x', 'y' }
+# Find keys in a that are not in b
+a.keys() - b.keys() # { 'z' }
+# Find (key,value) pairs in common
+a.items() & b.items() # { ('y', 2) }
+# Alter or filter dictionary contents
+# Make a new dictionary with certain keys removed
+c = {key:a[key] for key in a.keys() - {'z', 'w'}}
+# c is {'x': 1, 'y': 2}
+# A little-known feature of keys views is that they also support common 
+# set operations such as unions, intersections, and differences. 
+# if you use values() does not contain the operations above so if you must perform such calculations, they
+# can be accomplished by simply converting the values to a set first.
