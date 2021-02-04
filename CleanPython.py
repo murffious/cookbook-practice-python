@@ -9,3 +9,8 @@
 #1. Naming - lower case with underscores in between words - for variables and functions
 #_variable_name = private variable( by convention) OR __variable (two underscores) to prevetn name mangling
 #zip unzip function built in
+
+
+There are 4 ways - to write docs 
+
+
